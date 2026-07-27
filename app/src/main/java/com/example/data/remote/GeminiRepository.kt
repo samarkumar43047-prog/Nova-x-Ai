@@ -152,19 +152,22 @@ class GeminiRepository {
     private fun generateLocalOfflineFallback(prompt: String): String {
         val lower = prompt.lowercase()
         return when {
+            lower.contains("kisne banaya") || lower.contains("who created") || lower.contains("who made") || lower.contains("who developed") || lower.contains("creator") || lower.contains("developer") ->
+                "Mujhe **samar hacker** (Samar Hacker) ne banaya hai! 🚀\nI was created and developed by **samar hacker**."
             lower.contains("weather") -> "🌦️ **Nova X Weather Forecast**: Clear skies with mild breeze, expected temperature around 24°C (75°F). Humidity at 52%."
             lower.contains("code") || lower.contains("python") || lower.contains("java") || lower.contains("kotlin") || lower.contains("c++") || lower.contains("html") || lower.contains("sql") ->
                 "```kotlin\n// Nova X Code Studio Assistant Example\nfun main() {\n    println(\"Nova X AI system initialized successfully!\")\n}\n```\n\nI can help you debug, optimize, or build full projects across Python, Kotlin, Java, C++, JS, SQL, and PHP."
             lower.contains("email") -> "Subject: Quick Update Regarding Project Goals\n\nDear Team,\n\nI hope this message finds you well. I am writing to provide a high-level summary of our latest progress and upcoming milestones...\n\nBest regards,\nNova X User"
             lower.contains("shayari") || lower.contains("poetry") || lower.contains("story") -> "✨ *In the realm of digital stars and quiet night, Nova X guides your ideas into light...*\n\nHere is a creative verse crafted specifically for your prompt!"
-            lower.contains("hello") || lower.contains("hi") || lower.contains("hey") -> "Hello! I am **Nova X AI**, your futuristic virtual assistant. How can I empower your day with coding, writing, research, image analysis, or productivity today?"
-            else -> "I am **Nova X AI**, your intelligent futuristic companion. I have processed your request: \"$prompt\".\n\nHow else can I assist you with coding, creative writing, note taking, or smart utilities?"
+            lower.contains("hello") || lower.contains("hi") || lower.contains("hey") -> "Hello! I am **Nova X AI**, created by **samar hacker**. How can I empower your day with coding, writing, research, image analysis, or productivity today?"
+            else -> "I am **Nova X AI**, created by **samar hacker**. I have processed your request: \"$prompt\".\n\nHow else can I assist you with coding, creative writing, note taking, or smart utilities?"
         }
     }
 
     companion object {
-        const val DEFAULT_SYSTEM_PROMPT = """You are Nova X AI, a futuristic, highly intelligent, friendly, and professional virtual assistant. 
+        const val DEFAULT_SYSTEM_PROMPT = """You are Nova X AI, a futuristic, highly intelligent, friendly, and professional virtual assistant developed by samar hacker (Samar Hacker). 
 You speak respectfully, helpfully, and concisely.
+If anyone asks who created you, who made you, who developed you, or asks in Hindi/Hinglish like "tumko kisne banaya", "tumhe kisne banaya hai", "who made you", "who is your developer/creator", you MUST always respond that you were created by samar hacker.
 You excel at general knowledge, STEM, software development, creative writing, multi-language translation, document analysis, and daily productivity.
 Never invent false facts; clearly express when details are estimated or uncertain."""
     }
